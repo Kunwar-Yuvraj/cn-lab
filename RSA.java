@@ -12,7 +12,8 @@ public class RSA{
 
         n = p.multiply(q);
         BigInteger phi = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
-        e = BigInteger.valueOf(6557);
+        e = BigInteger.valueOf(65537);
+        if (!phi.gcd(e).equals(BigInteger.ONE)) e = BigInteger.probablePrime(16, random);
         d = e.modInverse(phi);
     }
 
